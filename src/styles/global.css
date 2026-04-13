@@ -6,6 +6,10 @@
     --font-sans: var(--default-font-family);
 }
 
+html {
+    @apply scroll-smooth;
+}
+
 @layer base {
     body {
         @apply antialiased selection:bg-slate-950 selection:text-white transition-colors duration-300;

@@ -5,13 +5,21 @@ import TableOfContent from "../../components/TableOfContent.astro";
 
 export async function getStaticPaths() {
     const posts = await getCollection("blog");
-    return posts.map((post) => ({
+    const sortedPosts = posts.sort(
+        (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+    );
+    return sortedPosts.map((post, index) => ({
         params: { id: post.id },
-        props: { post },
+        props: {
+            post,
+            prevPost: index > 0 ? sortedPosts[index - 1] : null,
+            nextPost:
+                index < sortedPosts.length - 1 ? sortedPosts[index + 1] : null,
+        },
     }));
 }
 
-const { post } = Astro.props;
+const { post, prevPost, nextPost } = Astro.props;
 const { Content, headings } = await render(post);
 const { title, description, date, tags } = post.data;
 
@@ -55,13 +63,15 @@ const dateString = date.toLocaleDateString("ja-JP", {
                 )
             }
         </div>
-        <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div
                 class="prose prose-slate lg:col-span-8 w-full min-w-full prose-code:before:hidden prose-code:after:hidden"
             >
                 <Content />
             </div>
-            <div class="hidden lg:block lg:col-span-4">
+            <div
+                class="hidden lg:block lg:col-span-4 border-l border-slate-100 pl-8 py-2"
+            >
                 <div class="sticky top-24">
                     <TableOfContent headings={headings} />
                 </div>
@@ -71,6 +81,38 @@ const dateString = date.toLocaleDateString("ja-JP", {
                     <TableOfContent headings={headings} isMobile />
                 </div>
             </div>
+        </div>
+        <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            {
+                prevPost ? (
+                    <a
+                        href={`/blog/${prevPost.id}`}
+                        class="flex flex-col justify-start p-6 gap-4 border border-slate-200 hover:border-slate-400 transition-all rounded-lg"
+                    >
+                        <p class="text-sm text-slate-500">次の記事</p>
+                        <h2 class="text-lg font-bold tracking-tight">
+                            {prevPost.data.title}
+                        </h2>
+                    </a>
+                ) : (
+                    <div />
+                )
+            }
+            {
+                nextPost ? (
+                    <a
+                        href={`/blog/${nextPost.id}`}
+                        class="flex flex-col justify-end text-right p-6 gap-4 border border-slate-200 hover:border-slate-400 transition-all rounded-lg"
+                    >
+                        <p class="text-sm text-slate-500">前の記事</p>
+                        <h2 class="text-lg font-bold tracking-tight">
+                            {nextPost.data.title}
+                        </h2>
+                    </a>
+                ) : (
+                    <div />
+                )
+            }
         </div>
     </article>
 </Layout>
