@@ -1,0 +1,28 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import TagCloud from "../../components/TagCloud.astro";
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blog");
+
+const tagCloudMap = new Map<string, number>();
+
+allPosts.forEach((post) => {
+    post.data.tags?.forEach((tag) => {
+        tagCloudMap.set(tag.name, (tagCloudMap.get(tag.name) || 0) + 1);
+    });
+});
+
+const tags = Array.from(tagCloudMap.entries())
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count);
+---
+
+<Layout>
+    <section class="py-12 md:py-16 flex flex-col items-start text-left">
+        <h1 class="text-4xl font-bold tracking-tight text-slate-900 mb-8">
+            タグ
+        </h1>
+        <TagCloud tags={tags} />
+    </section>
+</Layout>

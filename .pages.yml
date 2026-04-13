@@ -1,0 +1,83 @@
+media:
+  input: src/content/blog/images
+  output: ../images
+  rename: random
+
+content:
+  - name: blog
+    label: ブログ
+    type: collection
+    path: content/blog
+    format: yaml-frontmatter
+    delimiters: "---"
+    filename:
+      template: "{primary}.md"
+      field: create
+    fields:
+      - name: title
+        label: タイトル
+        type: string
+      - name: date
+        label: 日付
+        type: date
+      - name: description
+        label: 説明
+        type: string
+      - name: tags
+        label: タグ
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: タグ名
+            type: string
+      - name: body
+        label: 本文
+        type: rich-text
+    actions:
+      - name: deploy-site
+        label: デプロイする
+        scope: entry
+        workflow: deploy.yml
+        confirm:
+          title: デプロイしますか?
+          message: デプロイしますか?
+          button: Deploy🚀
+
+  - name: pages
+    label: 固定ページ
+    type: collection
+    path: content/pages
+    delimiters: "---"
+    format: yaml-frontmatter
+    filename:
+      template: "{primary}.md"
+      field: create
+    fields:
+      - name: title
+        label: タイトル
+        type: string
+      - name: description
+        label: 説明
+        type: string
+      - name: body
+        label: 本文
+        type: rich-text
+    actions:
+      - name: deploy-site
+        label: デプロイする
+        scope: entry
+        workflow: deploy.yml
+        confirm:
+          title: デプロイしますか?
+          message: デプロイしますか?
+          button: Deploy🚀
+
+actions:
+  - name: deploy-site
+    label: デプロイする
+    workflow: deploy.yml
+    confirm:
+      title: デプロイしますか?
+      message: デプロイしますか?
+      button: Deploy🚀

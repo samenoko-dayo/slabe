@@ -1,0 +1,20 @@
+---
+type Props = {
+    tags: { name: string; count: number }[];
+};
+const { tags } = Astro.props;
+---
+
+<div class="flex flex-wrap gap-3 items-start justify-start">
+    {
+        tags.map((tag) => (
+            <a
+                href={`/tags/${tag.name}`}
+                class="inline-flex items-center px-3 py-1.5 rounded-md border border-slate-200 bg-white text-sm font-medium text-slate-700"
+            >
+                # {tag.name}
+                <span class="ml-2 text-xs text-slate-500">{tag.count}</span>
+            </a>
+        ))
+    }
+</div>

@@ -1,0 +1,22 @@
+---
+import { siteConfig } from "../site.config";
+const year = new Date().getFullYear();
+---
+
+<footer class="w-full border-t border-slate-200 bg-white py-4">
+    <div
+        class="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between"
+    >
+        <p class="text-sm text-slate-500">
+            &copy; {year}
+            {siteConfig.author}. All rights reserved.
+        </p>
+        <div>
+            <a
+                href="/"
+                class="text-sm text-slate-500 hover:text-slate-900 transition-colors"
+                >GitHub</a
+            >
+        </div>
+    </div>
+</footer>

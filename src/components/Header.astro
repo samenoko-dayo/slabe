@@ -1,0 +1,25 @@
+---
+import { siteConfig } from "../site.config";
+---
+
+<header
+    class="fixed z-50 h-20 w-full bg-white/80 backdrop-blur-md border-b border-slate-200"
+>
+    <div
+        class="container mx-auto w-full max-w-7xl h-full flex flex-row items-center justify-between px-4 md:px-8"
+    >
+        <a href="/" class="text-2xl font-bold">{siteConfig.title}</a>
+        <nav class="flex flex-row items-center gap-4">
+            {
+                siteConfig.headerNav.map((item) => (
+                    <a
+                        href={item.link}
+                        class="font-medium text-slate-500 hover:text-slate-700 transition-all duration-300"
+                    >
+                        {item.name}
+                    </a>
+                ))
+            }
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,69 @@
+---
+import type { MarkdownHeading } from "astro";
+import { ChevronDown } from "@lucide/astro";
+interface Props {
+    headings: MarkdownHeading[];
+    isMobile?: boolean;
+}
+
+const { headings, isMobile = false } = Astro.props;
+const filteredHeadings = headings.filter((h) => h.depth <= 3);
+---
+
+{
+    filteredHeadings.length > 0 &&
+        (isMobile ? (
+            /* モバイル用：折りたたみ式 */
+            <details class="group w-full bg-white border border-slate-200 rounded-lg overflow-hidden transition-all duration-200">
+                <summary class="flex items-center justify-between p-4 cursor-pointer list-none select-none">
+                    <div class="flex items-center gap-2">
+                        <h2 class="text-sm font-bold tracking-tight text-slate-900">
+                            もくじを表示
+                        </h2>
+                    </div>
+                    <ChevronDown class="w-4 h-4 text-slate-500 transition-transform duration-200 group-open:rotate-180" />
+                </summary>
+                <nav class="px-4 pb-4 pt-2 border-t border-slate-100">
+                    <ul class="space-y-3">
+                        {filteredHeadings.map((h) => (
+                            <li
+                                class={`text-sm transition-all duration-200 hover:text-slate-900 ${h.depth === 2 ? "font-bold text-slate-700" : "font-medium ml-4 text-slate-500"}`}
+                            >
+                                <a href={`#${h.slug}`} class="block w-full">
+                                    {h.text}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+            </details>
+        ) : (
+            /* PC用：通常表示 */
+            <nav class="bg-white">
+                <h2 class="text-lg font-bold tracking-tight mb-4 text-slate-900 flex items-center gap-2">
+                    <span class="w-1 h-6 bg-slate-950 rounded-full" />
+                    もくじ
+                </h2>
+                <ul class="space-y-3">
+                    {filteredHeadings.map((h) => (
+                        <li
+                            class={`text-sm transition-all duration-200 hover:text-slate-900 ${h.depth === 2 ? "font-bold text-slate-700" : "font-medium ml-4 text-slate-500"}`}
+                        >
+                            <a href={`#${h.slug}`} class="block w-full">
+                                {h.text}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+        ))
+}
+
+<style>
+    :global(h2[id], h3[id]) {
+        scroll-margin-top: 6rem;
+    }
+    summary::-webkit-details-marker {
+        display: none;
+    }
+</style>

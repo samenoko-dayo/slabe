@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --default-font-family: "Inter Variable", "Noto Sans JP Variable", sans-serif;
+    --font-sans: var(--default-font-family);
+}
+
+@layer base {
+    body {
+        @apply antialiased selection:bg-slate-950 selection:text-white transition-colors duration-300;
+    }
+}
+
+@layer components {
+    .remark-link-card-plus__container {
+        @apply my-8 block;
+
+        img {
+            @apply m-0!;
+        }
+    }
+
+    .prose .remark-link-card-plus__container a.remark-link-card-plus__card {
+        @apply flex flex-col-reverse sm:flex-row border border-slate-200 rounded-lg border-solid overflow-hidden hover:border-slate-400 hover:shadow-md transition-all duration-200 text-inherit h-auto sm:h-[126px] bg-white font-normal;
+        text-decoration: none !important;
+    }
+
+    .remark-link-card-plus__main {
+        @apply flex flex-col justify-between p-4 flex-1 min-w-0;
+    }
+
+    .remark-link-card-plus__content {
+        @apply flex flex-col;
+    }
+
+    .prose .remark-link-card-plus__title {
+        @apply font-bold text-sm sm:text-base text-slate-900 line-clamp-1 mt-0 mb-1 leading-tight;
+    }
+
+    .prose .remark-link-card-plus__description {
+        @apply text-xs sm:text-sm text-slate-500 line-clamp-2 m-0 leading-snug;
+    }
+
+    .remark-link-card-plus__meta {
+        @apply flex items-center gap-2 mt-2;
+    }
+
+    .prose .remark-link-card-plus__favicon {
+        @apply w-4! h-4! object-contain;
+    }
+
+    .prose .remark-link-card-plus__url {
+        @apply text-xs text-slate-400 truncate m-0;
+    }
+
+    .remark-link-card-plus__thumbnail {
+        @apply block w-full sm:w-[240px] shrink-0 border-b sm:border-b-0 sm:border-l border-slate-100 border-solid;
+    }
+
+    .prose .remark-link-card-plus__image {
+        @apply w-full h-full object-cover aspect-[1.91/1] sm:aspect-auto;
+    }
+
+    .prose :not(pre)>code {
+        @apply wrap-break-word bg-slate-200/50 text-slate-800 px-1.5 py-0.5 rounded-md font-medium text-[0.9em] border border-slate-200;
+    }
+}
