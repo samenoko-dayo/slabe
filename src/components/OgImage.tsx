@@ -11,11 +11,11 @@ export const OgImage = ({ title, description, date, tags = [] }: Props) => (
             {date && (
                 <p className="text-xl font-medium text-slate-700">{date}</p>
             )}
-            <h1 className="font-bold text-4xl text-slate-900 leading-relaxed tracking-tight" style={{ textOverflow: "ellipsis", lineClamp: 3, wordBreak: "keep-all" }}>
+            <h1 className="font-bold text-6xl text-slate-900 tracking-tight" style={{ textOverflow: "ellipsis", lineClamp: 3, wordBreak: "keep-all" }}>
                 {title}
             </h1>
             {description && (
-                <p className="text-2xl font-medium text-slate-700 leading-relaxed tracking-tight" style={{ textOverflow: "ellipsis", lineClamp: 2, wordBreak: "keep-all" }}>{description}</p>
+                <p className="text-3xl font-medium text-slate-700 tracking-tight" style={{ textOverflow: "ellipsis", lineClamp: 2, wordBreak: "keep-all" }}>{description}</p>
             )}
             {tags && tags.length > 0 && (
                 <div className="flex flex-wrap gap-4 mt-4">
