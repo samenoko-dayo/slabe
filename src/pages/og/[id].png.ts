@@ -33,7 +33,7 @@ export const GET: APIRoute = async ({ props }) => {
     const buffer = await render(React.createElement(OgImage, { title, description, date, tags }), {
         width: 1200,
         height: 630,
-        format: "png",
+        format: "webp",
         stylesheets: [stylesheet],
         fonts: [
             {
@@ -49,6 +49,6 @@ export const GET: APIRoute = async ({ props }) => {
         ]
     })
     return new Response(new Uint8Array(buffer), {
-        headers: { "Content-Type": "image/png" }
+        headers: { "Content-Type": "image/webp" }
     })
 }
