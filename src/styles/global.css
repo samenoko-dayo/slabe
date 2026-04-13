@@ -7,7 +7,8 @@
 }
 
 html {
-    @apply scroll-smooth;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
 }
 
 @layer base {

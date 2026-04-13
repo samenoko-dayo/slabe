@@ -82,12 +82,14 @@ const dateString = date.toLocaleDateString("ja-JP", {
                 </div>
             </div>
         </div>
-        <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+        <div
+            class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 border-t border-slate-100 pt-8"
+        >
             {
                 prevPost ? (
                     <a
                         href={`/blog/${prevPost.id}`}
-                        class="flex flex-col justify-start p-6 gap-4 border border-slate-200 hover:border-slate-400 transition-all rounded-lg"
+                        class="flex flex-col justify-start p-6 gap-4 transition-all"
                     >
                         <p class="text-sm text-slate-500">次の記事</p>
                         <h2 class="text-lg font-bold tracking-tight">
@@ -102,7 +104,7 @@ const dateString = date.toLocaleDateString("ja-JP", {
                 nextPost ? (
                     <a
                         href={`/blog/${nextPost.id}`}
-                        class="flex flex-col justify-end text-right p-6 gap-4 border border-slate-200 hover:border-slate-400 transition-all rounded-lg"
+                        class="flex flex-col justify-end text-right p-6 gap-4 transition-all"
                     >
                         <p class="text-sm text-slate-500">前の記事</p>
                         <h2 class="text-lg font-bold tracking-tight">
