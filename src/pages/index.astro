@@ -10,7 +10,7 @@ const recentPosts = allPost
 	.slice(0, 6);
 ---
 
-<Layout>
+<Layout title="ホーム" description={siteConfig.description}>
 	<section class="py-16 md:py-24 flex flex-col items-start text-left">
 		<h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
 			{siteConfig.title}
