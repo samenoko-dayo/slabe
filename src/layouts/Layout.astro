@@ -19,7 +19,9 @@ const { title, description, ogImage, isPage = false } = Astro.props;
 
 const pageTitle = title ? `${title} | ${siteConfig.title}` : siteConfig.title;
 const pageDescription = description || siteConfig.description;
-const pageOgImage = ogImage || "/og.png";
+const pageOgImage = ogImage
+  ? new URL(ogImage, Astro.site).toString()
+  : new URL("/og.png", Astro.site).toString();
 ---
 
 <!doctype html>
