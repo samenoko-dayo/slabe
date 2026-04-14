@@ -21,6 +21,6 @@ export default defineConfig({
     remarkPlugins: [remarkGfm, remarkBreaks, remarkLinkCard]
   },
   image: {
-    remotePatterns: [{protocol: "https"}]
+    domains: ["skillicons.dev"]
   }
 });
