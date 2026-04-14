@@ -1,18 +1,14 @@
 {
-    "$schema": "./node_modules/wrangler/config-schema.json",
-    "name": "slabe",
-    "compatibility_date": "2026-04-14",
-    "assets": {
-        "directory": "./dist"
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "slabe",
+  "compatibility_date": "2026-04-14",
+  "assets": {
+    "directory": "./dist",
+  },
+  "routes": [
+    {
+      "pattern": "slabe.samenoko.work",
+      "custom_domain": true,
     },
-    "routes": [
-        {
-            "pattern": "slabe.samenoko.work",
-            "custom_domain": true
-        },
-        {
-            "pattern": "samenoko.work",
-            "custom_domain": true
-        }
-    ]
+  ],
 }
