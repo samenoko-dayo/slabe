@@ -9,6 +9,10 @@
         {
             "pattern": "slabe.samenoko.work",
             "custom_domain": true
+        },
+        {
+            "pattern": "samenoko.work",
+            "custom_domain": true
         }
     ]
 }
