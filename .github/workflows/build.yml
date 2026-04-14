@@ -3,7 +3,15 @@ name: Build and Deploy
 on:
   push:
     branches: [main]
+    paths:
+      - src/**
+      - astro.config.mjs
   workflow_dispatch:
+    inputs:
+      payload:
+        description: Pages CMS payload as JSON
+        required: true
+        type: string
 
 jobs:
   build:

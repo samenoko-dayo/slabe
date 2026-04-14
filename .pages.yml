@@ -38,7 +38,7 @@ content:
       - name: deploy-site
         label: デプロイする
         scope: entry
-        workflow: deploy.yml
+        workflow: build.yml
         confirm:
           title: デプロイしますか?
           message: デプロイしますか?
@@ -67,7 +67,7 @@ content:
       - name: deploy-site
         label: デプロイする
         scope: entry
-        workflow: deploy.yml
+        workflow: build.yml
         confirm:
           title: デプロイしますか?
           message: デプロイしますか?
@@ -76,7 +76,7 @@ content:
 actions:
   - name: deploy-site
     label: デプロイする
-    workflow: deploy.yml
+    workflow: build.yml
     confirm:
       title: デプロイしますか?
       message: デプロイしますか?
