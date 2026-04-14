@@ -12,7 +12,7 @@ import expressiveCode from 'astro-expressive-code';
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), expressiveCode()],
-  site: "https://slabe.vercel.app",
+  site: "https://slabe.samenoko.work",
 
   vite: {
     plugins: [tailwindcss()]
