@@ -72,5 +72,12 @@ const pageOgImage = ogImage
 
 <script>
   import twemoji from "twemoji";
+  import mediumZoom from "medium-zoom";
   twemoji.parse(document.body, { folder: "svg", ext: ".svg" });
+  mediumZoom(
+    ".prose img:not(.remark-link-card-plus__image,.remark-link-card-plus__favicon,.emoji)",
+    {
+      background: "rgba(0,0,0,0.8)",
+    },
+  );
 </script>

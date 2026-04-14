@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import TableOfContent from "../../components/TableOfContent.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection(
@@ -38,7 +39,11 @@ const dateString = date.toLocaleDateString("ja-JP", {
   ogImage={`/og/${post.id}.webp`}
   isPage
 >
-  <article class="py-12 md:py-20 flex flex-col items-start text-left">
+  <article class="py-12 md:py-16 flex flex-col items-start text-left">
+    <Breadcrumbs
+      items={[{ label: "ブログ", href: "/blog" }, { label: title }]}
+      class="mb-6 w-full"
+    />
     <div class="mb-8 w-full border-b border-slate-100 pb-8">
       <time
         datetime={date.toISOString()}
@@ -122,24 +127,3 @@ const dateString = date.toLocaleDateString("ja-JP", {
     </div>
   </article>
 </Layout>
-
-<script>
-  import mediumZoom from "medium-zoom";
-
-  mediumZoom(
-    ".prose img:not(.remark-link-card-plus__image,.remark-link-card-plus__favicon,.emoji)",
-    {
-      background: "rgba(0,0,0,0.8)",
-      margin: 24,
-    },
-  );
-</script>
-
-<style is:global>
-  .medium-zoom-overlay {
-    @apply z-100;
-  }
-  .medium-zoom-image {
-    @apply z-100;
-  }
-</style>

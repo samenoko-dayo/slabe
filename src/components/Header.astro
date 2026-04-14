@@ -1,5 +1,10 @@
 ---
 import { siteConfig } from "../site.config";
+const { pathname } = Astro.url;
+
+const isActive = (path: string) => {
+  return path === '/' ? pathname === '/' : pathname.startsWith(path);
+};
 ---
 
 <header
@@ -14,7 +19,10 @@ import { siteConfig } from "../site.config";
                 siteConfig.headerNav.map((item) => (
                     <a
                         href={item.link}
-                        class="font-medium text-slate-500 hover:text-slate-700 transition-all duration-300"
+                        class:list={[
+                          "font-medium transition-all duration-300",
+                          isActive(item.link) ? "text-slate-900 font-bold" : "text-slate-500 hover:text-slate-700"
+                        ]}
                     >
                         {item.name}
                     </a>

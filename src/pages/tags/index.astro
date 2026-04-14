@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import TagCloud from "../../components/TagCloud.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import { getCollection } from "astro:content";
 
 const allPosts = await getCollection("blog", ({ data }) => import.meta.env.DEV || data.draft !== true);
@@ -20,6 +21,7 @@ const tags = Array.from(tagCloudMap.entries())
 
 <Layout title="タグ" description="タグの一覧ページです">
     <section class="py-12 md:py-16 flex flex-col items-start text-left">
+        <Breadcrumbs items={[{ label: "タグ" }]} class="mb-6 w-full" />
         <h1 class="text-4xl font-bold tracking-tight text-slate-900 mb-8">
             タグ
         </h1>

@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import PostCard from "../../components/PostCard.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
 
 export async function getStaticPaths() {
     const allPosts = await getCollection("blog", ({ data }) => import.meta.env.DEV || data.draft !== true);
@@ -30,6 +31,13 @@ const { posts } = Astro.props;
 
 <Layout title={`タグ: ${tag}`} description={`${tag}タグが付いた記事の一覧ページです`}>
     <section class="py-12 md:py-16 flex flex-col items-start text-left">
+        <Breadcrumbs 
+          items={[
+            { label: "タグ", href: "/tags" },
+            { label: tag }
+          ]} 
+          class="mb-6 w-full" 
+        />
         <p
             class="text-sm font-semibold text-slate-500 mb-2 uppercase tracking-wide"
         >
