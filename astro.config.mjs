@@ -19,5 +19,8 @@ export default defineConfig({
   },
   markdown: {
     remarkPlugins: [remarkGfm, remarkBreaks, remarkLinkCard]
+  },
+  image: {
+    remotePatterns: [{protocol: "https"}]
   }
 });

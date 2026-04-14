@@ -1,10 +1,32 @@
 export const siteConfig = {
-    title: "Slabe",
-    description: "暇人のブログ(β)",
-    headerNav: [
-        { name: "About", link: "/about" },
-        { name: "Blog", link: "/blog" },
-        { name: "Tags", link: "/tags" }
-    ],
-    author: "samenoko"
-}
+  title: "Slabe",
+  description: "暇人のブログ(β)",
+  headerNav: [
+    { name: "About", link: "/about" },
+    { name: "Blog", link: "/blog" },
+    { name: "Tags", link: "/tags" },
+  ],
+  author: "samenoko",
+  bio: "18歳、無職です。\nPythonとフロントエンド系を書きます。\n猫とかを愛しています。",
+  writenLang: [
+    "html",
+    "css",
+    "js",
+    "tailwind",
+    "astro",
+    "nuxt",
+    "python",
+    "docker",
+    "githubactions",
+  ],
+  usage: [
+    "vscode",
+    "github",
+    "cloudflare",
+    "ubuntu",
+    "arch",
+    "apple",
+    "windows",
+  ],
+  hobbies: ["プログラミング", "音楽鑑賞", "ASMR", "音声作品"],
+};

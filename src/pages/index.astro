@@ -3,37 +3,87 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import PostCard from "../components/PostCard.astro";
 import { siteConfig } from "../site.config";
+import { Image } from "astro:assets";
+import profileIcon from "../assets/icon.png";
 
-const allPost = await getCollection("blog", ({ data }) => import.meta.env.DEV || data.draft !== true);
+const allPost = await getCollection(
+  "blog",
+  ({ data }) => import.meta.env.DEV || data.draft !== true,
+);
 const recentPosts = allPost
-	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-	.slice(0, 6);
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 6);
 ---
 
 <Layout title="ホーム" description={siteConfig.description}>
-	<section class="py-16 md:py-24 flex flex-col items-start text-left">
-		<h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-			{siteConfig.title}
-		</h1>
-		<p class="text-lg md:text-xl text-slate-500 leading-relaxed">
-			{siteConfig.description}
-		</p>
-	</section>
-	<section
-		class="py-12 flex flex-col items-start gap-8 border-t border-slate-100"
-	>
-		<div class="w-full flex items-center justify-between">
-			<h2 class="text-2xl font-bold tracking-tight">最近の投稿</h2>
-			<a
-				href="/blog"
-				class="text-sm font-semibold text-slate-500 hover:text-slate-900 transition-colors"
-				>すべての記事 &rarr;</a
-			>
-		</div>
-		<div
-			class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-		>
-			{recentPosts.map((post) => <PostCard post={post} />)}
-		</div>
-	</section>
+  <section class="py-16 md:py-24 flex flex-col items-start text-left">
+    <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+      {siteConfig.title}
+    </h1>
+    <p class="text-lg md:text-xl text-slate-500 leading-relaxed">
+      {siteConfig.description}
+    </p>
+  </section>
+  <section
+    class="py-12 flex flex-col items-start gap-8 border-t border-slate-100"
+  >
+    <div class="w-full flex items-center justify-between">
+      <h2 class="text-2xl font-bold tracking-tight">最近の投稿</h2>
+      <a
+        href="/blog"
+        class="text-sm font-semibold text-slate-500 hover:text-slate-900 transition-colors"
+        >すべての記事 &rarr;</a
+      >
+    </div>
+    <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {recentPosts.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+  <section
+    class="py-12 flex flex-col items-start gap-8 border-t border-slate-100"
+  >
+    <div class="w-full flex items-center justify-between">
+      <h2 class="text-2xl font-bold tracking-tight">プロフィール</h2>
+      <a
+        href="/profile"
+        class="text-sm font-semibold text-slate-500 hover:text-slate-900 transition-colors"
+        >もっと詳しく &rarr;</a
+      >
+    </div>
+    <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="flex items-start gap-8">
+        <Image
+          src={profileIcon}
+          alt="アイコン"
+          class="w-20 md:w-24 aspect-square rounded-full object-cover"
+        />
+        <div class="flex flex-col justify-start gap-2">
+          <h3 class="text-xl font-bold">{siteConfig.author}</h3>
+          <p class="text-slate-500 whitespace-pre-wrap">{siteConfig.bio}</p>
+        </div>
+      </div>
+      <div class="flex flex-col items-start gap-4">
+        <h3 class="text-xl font-bold">書ける</h3>
+        <Image
+          src={`https://skillicons.dev/icons?i=${siteConfig.writenLang.join(",")}&theme=light`}
+          alt="書ける言語"
+          inferSize
+        />
+        <h3 class="text-xl font-bold">使っているもの</h3>
+        <Image
+          src={`https://skillicons.dev/icons?i=${siteConfig.usage.join(",")}&theme=light`}
+          alt="使っているもの"
+          inferSize
+        />
+        <h3 class="text-xl font-bold">趣味</h3>
+        <ul class="flex flex-wrap gap-2">
+          {
+            siteConfig.hobbies.map((hobby) => (
+              <li class="text-slate-700">{hobby}</li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
 </Layout>
