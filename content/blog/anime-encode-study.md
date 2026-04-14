@@ -1,4 +1,5 @@
 ---
+draft: false
 title: アニメエンコードの研究(笑)
 date: 2026-04-06
 description: アニメエンコードの研究をしているログです。

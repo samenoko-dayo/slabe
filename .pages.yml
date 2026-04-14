@@ -31,6 +31,10 @@ content:
           - name: name
             label: タグ名
             type: string
+      - name: draft
+        label: 下書き
+        type: boolean
+        default: true
       - name: body
         label: 本文
         type: rich-text

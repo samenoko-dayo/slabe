@@ -1,4 +1,5 @@
 ---
+draft: false
 title: 俺が静的サイトを推す理由
 date: 2026-04-12
 description: 私が静的サイトを推す理由をちょっとだけ語る

@@ -1,4 +1,5 @@
 ---
+draft: false
 title: Cloudflare Zero Trustで宅外から宅内のネットワークへアクセスする
 date: 2025-12-23
 description: Cloudflare Zero Trustを使用して、外部から自宅のネットワークに安全にアクセスし、かつ宅内では直結で通信する「管理ネットワーク」の設定方法を解説します。

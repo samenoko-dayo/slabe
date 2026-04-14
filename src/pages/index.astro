@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import PostCard from "../components/PostCard.astro";
 import { siteConfig } from "../site.config";
 
-const allPost = await getCollection("blog");
+const allPost = await getCollection("blog", ({ data }) => import.meta.env.DEV || data.draft !== true);
 const recentPosts = allPost
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 	.slice(0, 6);

@@ -9,7 +9,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const posts = await getCollection("blog");
+    const posts = await getCollection("blog", ({ data }) => import.meta.env.DEV || data.draft !== true);
     return posts.map((post) => ({
         params: { id: post.id },
         props: { post }

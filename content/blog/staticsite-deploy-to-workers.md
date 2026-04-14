@@ -1,4 +1,5 @@
 ---
+draft: false
 title: 静的サイトをCloudflare Workersにデプロイする
 date: 2026-04-14
 description: Cloudflare Workersは静的サイトもデプロイできるよ。

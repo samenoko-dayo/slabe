@@ -1,4 +1,5 @@
 ---
+draft: false
 title: Qwen3.5をAndroidスマホで動かしてみよう！(not 実用的)
 date: 2026-04-09
 description: Qwen3.5をAndroidスマホで動かしてみたかったログ

@@ -1,4 +1,5 @@
 ---
+draft: false
 title: ほぼ無料でMisskeyインスタンスを立てたよ
 date: 2026-04-09
 description: ほぼ無料でMisskeyインスタンスを立てただけ

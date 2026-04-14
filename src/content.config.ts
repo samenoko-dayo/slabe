@@ -10,7 +10,8 @@ const blog = defineCollection({
         date: z.date(),
         tags: z.array(z.object({
             name: z.string()
-        })).optional()
+        })).optional(),
+        draft: z.boolean().optional()
     })
 })
 
