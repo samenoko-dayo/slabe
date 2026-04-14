@@ -1,5 +1,5 @@
 media:
-  input: src/content/blog/images
+  input: content/images
   output: ../images
   rename: random
 
