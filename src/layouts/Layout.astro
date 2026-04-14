@@ -12,9 +12,10 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  isPage?: boolean;
 }
 
-const { title, description, ogImage } = Astro.props;
+const { title, description, ogImage, isPage = false } = Astro.props;
 
 const pageTitle = title ? `${title} | ${siteConfig.title}` : siteConfig.title;
 const pageDescription = description || siteConfig.description;
@@ -38,7 +39,7 @@ const pageOgImage = ogImage
     <meta name="description" content={pageDescription} />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={isPage ? "article" : "website"} />
     <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
