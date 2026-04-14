@@ -2,6 +2,7 @@
 title: About
 description: このサイトについて
 ---
+
 ## About
 
 このサイトはいい感じのブログです。嘘です。カスみたいなブログです。  
@@ -15,7 +16,7 @@ description: このサイトについて
 
 ### Astro
 
-[https://astro.build/](https://nuxt.com/)
+[https://astro.build/](https://astro.build/)
 
 静的サイトジェネレーターです。書き慣れているのはAstroなんだけど、なんとなくで選んだんだよ。
 
@@ -43,4 +44,3 @@ OG画像生成用です。satoriよりも高速らしいです。
 [https://www.cloudflare.com/ja-jp/developer-platform/products/workers/](https://www.cloudflare.com/ja-jp/developer-platform/products/workers/)
 
 デプロイに使っています。
-
