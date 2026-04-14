@@ -17,7 +17,7 @@ const { items = [], class: className } = Astro.props;
 <nav
     aria-label="Breadcrumb"
     class:list={[
-        "flex overflow-x-auto whitespace-nowrap py-2 text-sm text-neutral-500 dark:text-neutral-400",
+        "flex overflow-x-auto whitespace-nowrap py-2 text-sm text-slate-500",
         className,
     ]}
 >
@@ -25,7 +25,7 @@ const { items = [], class: className } = Astro.props;
         <li class="inline-flex items-center">
             <a
                 href="/"
-                class="inline-flex items-center gap-1.5 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-sm"
+                class="inline-flex items-center gap-1.5 hover:text-slate-900 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 rounded-sm"
             >
                 <House class="w-4 h-4 shrink-0" />
                 <span class="sr-only">ホーム</span>
@@ -36,10 +36,10 @@ const { items = [], class: className } = Astro.props;
                 const isLast = index === items.length - 1;
                 return (
                     <li class="inline-flex items-center">
-                        <ChevronRight class="w-4 h-4 text-neutral-400 dark:text-neutral-500 shrink-0" />
+                        <ChevronRight class="w-4 h-4 text-slate-400 shrink-0" />
                         {isLast || !item.href ? (
                             <span
-                                class="ml-1.5 sm:ml-2 font-medium text-neutral-900 dark:text-neutral-100"
+                                class="ml-1.5 sm:ml-2 font-medium text-slate-900"
                                 aria-current={isLast ? "page" : undefined}
                             >
                                 {item.label}
@@ -47,7 +47,7 @@ const { items = [], class: className } = Astro.props;
                         ) : (
                             <a
                                 href={item.href}
-                                class="ml-1.5 sm:ml-2 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-sm"
+                                class="ml-1.5 sm:ml-2 hover:text-slate-900 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 rounded-sm"
                             >
                                 {item.label}
                             </a>

@@ -3,6 +3,8 @@
 このファイルは、本プロジェクトで一貫した UI を維持するためのデザイン規則をまとめたものです。
 デザインやスタイリングは Tailwind CSS のクラス名をベースに構築されています。
 
+ダークモード対応は現時点で行わない。
+
 ## タイポグラフィ (Typography)
 - **ベースフォント**: `"Inter Variable", "Noto Sans JP Variable", sans-serif`
   - 英字は Inter、日本語は Noto Sans JP を利用する。
