@@ -4,7 +4,10 @@ import Layout from "../../layouts/Layout.astro";
 import TableOfContent from "../../components/TableOfContent.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog", ({ data }) => import.meta.env.DEV || data.draft !== true);
+  const posts = await getCollection(
+    "blog",
+    ({ data }) => import.meta.env.DEV || data.draft !== true,
+  );
   const sortedPosts = posts.sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
   );
@@ -119,3 +122,24 @@ const dateString = date.toLocaleDateString("ja-JP", {
     </div>
   </article>
 </Layout>
+
+<script>
+  import mediumZoom from "medium-zoom";
+
+  mediumZoom(
+    ".prose img:not(.remark-link-card-plus__image,.remark-link-card-plus__favicon)",
+    {
+      background: "rgba(0,0,0,0.8)",
+      margin: 24,
+    },
+  );
+</script>
+
+<style is:global>
+  .medium-zoom-overlay {
+    @apply z-100;
+  }
+  .medium-zoom-image {
+    @apply z-100;
+  }
+</style>
