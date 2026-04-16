@@ -1,46 +1,57 @@
-# Astro Starter Kit: Basics
+# slabe
 
-```sh
-bun create astro@latest -- --template basics
+https://slabe.samenoko.work/
+
+暇人のブログ(β)
+
+## 概要
+
+Astroで構築されたブログです。
+
+## 機能
+
+- ブログ
+- タグ毎ページ
+- パンくずリスト
+- 目次
+- OG画像自動生成
+
+## スタック
+
+- Astro
+- tailwindcss
+    - tailwindcss/typography
+- takumi
+
+## AIの利用について
+
+開発にあたってAIを利用しています。  
+Google Antigravityを使用しています。
+
+なお記事の執筆に関してはAIは利用していません。
+
+## コマンド
+
+### 依存関係のインストール
+
+```shell
+bun install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### 開発サーバーの起動
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```shell
+bun run dev
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+### ビルド
 
-## 🧞 Commands
+```shell
+bun run build
+```
 
-All commands are run from the root of the project, from a terminal:
+### デプロイ
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```shell
+bunx wrangler deploy
+```
