@@ -37,7 +37,9 @@ content:
         default: true
       - name: body
         label: 本文
-        type: rich-text
+        type: code
+        options:
+          language: markdown
     actions:
       - name: deploy-site
         label: デプロイする
